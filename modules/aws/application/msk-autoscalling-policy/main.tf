@@ -1,5 +1,3 @@
-################### Política de AutoScaling para o armazenamento do MSK#######################
-
 resource "aws_appautoscaling_policy" "this" {
   name               = var.name
   policy_type        = var.policy_type
