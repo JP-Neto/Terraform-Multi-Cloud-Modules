@@ -7,8 +7,8 @@ resource "oci_core_route_table" "this" {
     for_each = var.route_rules
     content {
       network_entity_id = route_rules.value.network_entity_id
-      destination       = route_rules.value.destination
-      destination_type  = lookup(route_rules.value, "destination_type", "CIDR_BLOCK")
+      destination       = route_rules.value.destination           
+      destination_type  = can(regex("services", route_rules.value.destination)) ? "SERVICE_CIDR_BLOCK" : "CIDR_BLOCK"      
       description       = lookup(route_rules.value, "description", null)
     }
   }
