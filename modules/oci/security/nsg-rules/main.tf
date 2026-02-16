@@ -35,7 +35,7 @@ resource "oci_core_network_security_group_security_rule" "this" {
     "${r.direction}-${r.protocol}-${r.from_port}-${r.to_port}-${lookup(r, "source", "none")}-${lookup(r, "destination", "none")}" => r 
   }
 
-  network_security_group_id = oci_core_network_security_group.this.id
+  network_security_group_id = var.network_security_group_id
   direction                 = each.value.direction
   protocol                  = each.value.protocol
   description               = each.value.description
