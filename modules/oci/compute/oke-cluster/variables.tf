@@ -1,36 +1,46 @@
 variable "compartment_id" {
   type        = string
-  description = "OCID do compartimento onde o cluster será criado."
-}
-
-variable "vcn_id" {
-  type        = string
-  description = "OCID da VCN onde o cluster será alocado."
-}
-
-variable "kubernetes_version" {
-  type        = string
-  description = "Versão do Kubernetes (ex: v1.31.1)."
+  description = "OCID do compartment"
 }
 
 variable "cluster_name" {
   type        = string
-  description = "Nome de exibição do cluster OKE."
+  description = "Nome do cluster OKE"
 }
 
-variable "public_subnet_id" {
+variable "kubernetes_version" {
   type        = string
-  description = "OCID da subnet pública para o endpoint da API."
+  description = "Versão do Kubernetes"
+}
+
+variable "vcn_id" {
+  type        = string
+  description = "OCID da VCN"
+}
+
+variable "endpoint_subnet_id" {
+  type        = string
+  description = "Subnet onde o endpoint do cluster será criado"
+}
+
+variable "service_lb_subnet_ids" {
+  type        = list(string)
+  description = "Subnets usadas para Load Balancers do cluster"
 }
 
 variable "cluster_nsg_ids" {
   type        = list(string)
+  description = "Lista de NSGs anexados ao endpoint do cluster"
   default     = []
-  description = "Lista de OCIDs dos Network Security Groups para o endpoint do cluster."
+}
+
+variable "is_public_endpoint" {
+  type        = bool
+  description = "Define se o endpoint do cluster será público"
+  default     = true
 }
 
 variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "Tags para organização dos recursos."
+  type    = map(string)
+  default = {}
 }

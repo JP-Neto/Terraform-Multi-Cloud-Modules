@@ -1,21 +1,17 @@
 resource "oci_containerengine_cluster" "this" {
   compartment_id     = var.compartment_id
-  vcn_id             = var.vcn_id
-  kubernetes_version = var.kubernetes_version
   name               = var.cluster_name
-
-  options {
-    service_lb_subnet_ids = [var.public_subnet_id]
-    add_on_options {
-      is_kubernetes_dashboard_enabled = false
-      is_tiller_enabled               = false
-    }
-  }
+  kubernetes_version = var.kubernetes_version
+  vcn_id             = var.vcn_id
 
   endpoint_config {
-    is_public_ip_enabled = true
-    subnet_id            = var.public_subnet_id
+    is_public_ip_enabled = var.is_public_endpoint
+    subnet_id            = var.endpoint_subnet_id
     nsg_ids              = var.cluster_nsg_ids
+  }
+
+  options {
+    service_lb_subnet_ids = var.service_lb_subnet_ids
   }
 
   freeform_tags = var.tags
