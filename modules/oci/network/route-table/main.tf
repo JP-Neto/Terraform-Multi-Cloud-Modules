@@ -1,22 +1,3 @@
-/*resource "oci_core_route_table" "this" {
-  compartment_id = var.compartment_id
-  vcn_id         = var.vcn_id
-  display_name   = var.display_name
-
-  dynamic "route_rules" {
-    for_each = var.route_rules
-    content {
-      network_entity_id = route_rules.value.network_entity_id
-      destination       = route_rules.value.destination           
-      destination_type  = can(regex("services", route_rules.value.destination)) ? "SERVICE_CIDR_BLOCK" : "CIDR_BLOCK"      
-      description       = lookup(route_rules.value, "description", null)
-    }
-  }
-
-  freeform_tags = var.tags
-}
-*/
-# Busca dinamicamente os serviços da região atual (ex: Vinhedo)
 data "oci_core_services" "this" {
   filter {
     name   = "name"
@@ -24,7 +5,6 @@ data "oci_core_services" "this" {
     regex  = true
   }
 }
-
 resource "oci_core_route_table" "this" {
   compartment_id = var.compartment_id
   vcn_id         = var.vcn_id
