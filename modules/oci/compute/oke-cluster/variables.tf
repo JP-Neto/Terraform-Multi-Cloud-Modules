@@ -23,7 +23,7 @@ variable "public_subnet_id" {
   description = "OCID da subnet pública para o endpoint da API."
 }
 
-variable "nsg_ids" {
+variable "cluster_nsg_ids" {
   type        = list(string)
   default     = []
   description = "Lista de OCIDs dos Network Security Groups para o endpoint do cluster."
