@@ -13,6 +13,11 @@ variable "name" {
   description = "Nome de exibição do Network Security Group"
 }
 
+variable "namespace" {
+  type        = string
+  description = "Namespace de organização das tags"
+}
+
 variable "tags" {
   type        = map(string)
   default     = {}
