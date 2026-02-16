@@ -20,7 +20,3 @@ resource "oci_containerengine_cluster" "this" {
 
   freeform_tags = var.tags
 }
-
-output "cluster_id" {
-  value = oci_containerengine_cluster.this.id
-}
