@@ -20,7 +20,13 @@ variable "cluster_name" {
 
 variable "public_subnet_id" {
   type        = string
-  description = "OCID da subnet pública para o Load Balancer e Endpoint da API."
+  description = "OCID da subnet pública para o endpoint da API."
+}
+
+variable "cluster_nsg_ids" {
+  type        = list(string)
+  default     = []
+  description = "Lista de OCIDs dos Network Security Groups para o endpoint do cluster."
 }
 
 variable "tags" {

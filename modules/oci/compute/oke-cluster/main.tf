@@ -15,6 +15,7 @@ resource "oci_containerengine_cluster" "this" {
   endpoint_config {
     is_public_ip_enabled = true
     subnet_id            = var.public_subnet_id
+    cluster_nsg_ids      = var.cluster_nsg_ids
   }
 
   freeform_tags = var.tags

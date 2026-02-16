@@ -10,7 +10,7 @@ variable "compartment_id" {
 
 variable "kubernetes_version" {
   type        = string
-  description = "Versão do Kubernetes (deve ser compatível com a do cluster)."
+  description = "Versão do Kubernetes dos nodes (deve ser compatível com a do cluster)."
 }
 
 variable "node_pool_name" {
@@ -25,12 +25,12 @@ variable "node_shape" {
 
 variable "node_memory_gb" {
   type        = number
-  description = "Quantidade de memória em GB (para shapes Flex)."
+  description = "Quantidade de memória em GB para o shape flex."
 }
 
 variable "node_ocpus" {
   type        = number
-  description = "Quantidade de OCPUs (para shapes Flex)."
+  description = "Quantidade de OCPUs para o shape flex."
 }
 
 variable "node_image_id" {
@@ -40,18 +40,24 @@ variable "node_image_id" {
 
 variable "availability_domain" {
   type        = string
-  description = "AD onde os nós serão criados."
+  description = "Availability Domain onde os nós serão criados."
 }
 
 variable "private_subnet_id" {
   type        = string
-  description = "OCID da subnet privada onde os workers ficarão isolados."
+  description = "OCID da subnet privada onde os workers ficarão alocados."
 }
 
 variable "node_pool_size" {
   type        = number
   default     = 1
   description = "Quantidade de nós no pool."
+}
+
+variable "node_nsg_ids" {
+  type        = list(string)
+  default     = []
+  description = "Lista de OCIDs dos Network Security Groups para os worker nodes."
 }
 
 variable "tags" {
