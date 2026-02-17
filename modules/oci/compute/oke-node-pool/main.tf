@@ -21,7 +21,7 @@ resource "oci_containerengine_node_pool" "this" {
       subnet_id           = var.private_subnet_id
     }
     size = var.node_pool_size
-    node_nsg_ids = var.node_nsg_ids
+    nsg_ids  = var.node_nsg_ids
   }
 
   freeform_tags = var.tags
