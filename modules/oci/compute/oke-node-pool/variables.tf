@@ -54,7 +54,7 @@ variable "node_pool_size" {
   description = "Quantidade de nós no pool."
 }
 
-variable "node_nsg_ids" {
+variable "nsg_ids" {
   type        = list(string)
   default     = []
   description = "Lista de OCIDs dos Network Security Groups para os worker nodes."
