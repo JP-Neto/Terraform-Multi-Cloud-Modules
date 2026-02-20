@@ -18,3 +18,4 @@ output "lb_name" {
   description = "Nome do Load Balancer"
   value       = aws_lb.this.name
 }
+
