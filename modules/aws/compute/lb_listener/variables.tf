@@ -1,36 +1,25 @@
 variable "lb_arn" {
-  description = "ARN do Load Balancer"
+  description = "ARN do Application Load Balancer onde o listener será criado"
   type        = string
 }
 
 variable "port" {
-  description = "Porta do Listener (Padrão 443)"
+  description = "Porta do listener (ex: 80 ou 443)"
   type        = number
-  default     = 443
 }
 
 variable "protocol" {
-  description = "Protocolo do Listener HTTP, HTTPS, TCP (Padrão HTTPS)"
-  type        = string
-  default     = "HTTPS"
-}
-
-variable "ssl_policy" {
-  description = "Política SSL (ex: ELBSecurityPolicy-TLS13-1-2-2021-06)"
-  type        = string
-}
-
-variable "certificate_arn" {
-  description = "ARN do certificado ACM"
+  description = "Protocolo do listener (HTTP ou HTTPS)"
   type        = string
 }
 
 variable "target_group_arn" {
-  description = "ARN do Target Group para redirecionamento"
+  description = "ARN do Target Group para onde o listener irá encaminhar o tráfego"
   type        = string
 }
 
-variable "tags" {
-  description = "Tags aplicadas ao recurso"
-  type        = map(string)
+variable "certificate_arn" {
+  description = "ARN do certificado ACM (obrigatório apenas se protocol for HTTPS)"
+  type        = string
+  default     = null
 }
