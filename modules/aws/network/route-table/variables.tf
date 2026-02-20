@@ -1,21 +1,24 @@
 variable "vpc_id" {
-  type = string
+  description = "O ID da Virtual Private Cloud (VPC) onde os recursos serão implantados."
+  type        = string
 }
 
 variable "subnet_ids" {
-  description = "Lista com as duas subnets públicas (em ordem)"
+  description = "Lista contendo os IDs das subnets (ex: subnets públicas). Recomenda-se passar os IDs em ordem para garantir a distribuição correta."
   type        = list(string)
 }
 
 variable "tags" {
-  type = map(string)
+  description = "Um mapa de metadados (tags) para aplicar aos recursos, facilitando a organização, filtragem e gestão de custos."
+  type        = map(string)
 }
 
 variable "service_name" {
-  type = map(string)
+  description = "Mapa contendo as nomenclaturas do serviço. Pode ser usado para definir nomes curtos, slugs ou nomes por contexto."
+  type        = map(string)
 }
 
 variable "azs" {
-  type    = list(string)
-  default = ["us-east-1a", "us-east-1b","us-east-1c"]
+  description = "Lista de Zonas de Disponibilidade (Availability Zones) da AWS que serão utilizadas para alta disponibilidade."
+  type        = list(string)
 }

@@ -6,7 +6,7 @@ resource "aws_route" "this" {
   for_each      = local.routes
   route_table_id = var.route_table_id
 
-
+  # Destino (aceita 'destination_cidr_block' OU 'cidr_block' no JSON)
   destination_cidr_block       = try(coalesce(
                                       lookup(each.value, "destination_cidr_block", null),
                                       lookup(each.value, "cidr_block", null)
