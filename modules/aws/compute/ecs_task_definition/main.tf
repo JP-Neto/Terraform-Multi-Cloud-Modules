@@ -15,5 +15,14 @@ resource "aws_ecs_task_definition" "this" {
   }
 
   tags = var.tags
+
+  lifecycle {
+    create_before_destroy = true       
+    ignore_changes = [
+      container_definitions,
+      cpu,
+      memory
+    ]
+  }
 }
 
