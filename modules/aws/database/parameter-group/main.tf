@@ -13,4 +13,9 @@ resource "aws_db_parameter_group" "this" {
       apply_method = "pending-reboot" 
     }
   }
+  lifecycle {   
+    ignore_changes = [
+      parameter,
+    ]
+  }
 }
