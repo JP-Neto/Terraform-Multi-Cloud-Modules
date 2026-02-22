@@ -5,7 +5,7 @@ resource "aws_cloudwatch_event_rule" "this" {
     source      = ["aws.ecr"]
     detail_type = ["ECR Image Action"]
     detail = {
-      action_type     = ["PUSH"]
+      action_type     = ["PutImage"]
       result          = ["SUCCESS"]
       repository-name = [var.repository_name]
     }
