@@ -1,6 +1,6 @@
 # Aplicação CodeDeploy
 resource "aws_codedeploy_app" "this" {
-  compute_platform = "Serverless" 
+  compute_platform = "ECS" 
   name             = var.app_name
 }
 
