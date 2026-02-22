@@ -1,39 +1,7 @@
-variable "name"{
-    description = "Nome da Lambda"
-    type = string
-}
-
-variable "iam_role"{
-    description = "iam role attach Lambda"
-    type = string
-}
-
-variable "handler"{
-    description = "handler Lambda"
-    type = string
-}
-
-variable "alb_int_auth" {
-  description = "Variavél do ALB"  
-  type = string
-}
-
-variable "filename"{
-    description = "filename Lambda path"
-    type = string
-}
-
-variable "security_group"{
-    description = "Security Group Attach Lambda"
-    type = string
-}
-
-variable "subnet_ids"{
-    description = "Subnet Ids Attach Lambda"
-    type        = list(string)
-}
-
-variable "tags" {
-  description = "Tags da Lambda"  
-  type = map(string)
-}
+variable "function_name" { type = string }
+variable "role_arn"      { type = string }
+variable "source_file"   { type = string } # Caminho do arquivo .py
+variable "sns_topic_arn" { type = string }
+variable "cluster_name"  { type = string }
+variable "service_name"  { type = string }
+variable "tags"          { type = map(string) }
