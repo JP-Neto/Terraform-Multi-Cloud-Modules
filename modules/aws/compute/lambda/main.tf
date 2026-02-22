@@ -15,10 +15,7 @@ resource "aws_lambda_function" "this" {
   timeout          = 30
 
   environment {
-    variables = {
-      SNS_TOPIC_ARN = var.sns_topic_arn
-      CLUSTER_NAME  = var.cluster_name
-      SERVICE_NAME  = var.service_name
+    variables = {    
     }
   }
 
